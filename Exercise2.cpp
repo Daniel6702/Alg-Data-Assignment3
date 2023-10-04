@@ -1,19 +1,19 @@
 #include <iostream>
 using namespace std;
 
-/*
-The function prints out m '*', then recursivly m+1. When the recursion ends (triangle peak) m>n. 
-We just again print m '*' thus mirroring the pattern in reverse during the recursion unwind.
-*/
 void triangle(int m, int n) {
+    //once m reaches n, the recursive function will begin to unwind
     if (m > n) {
         return;
     }
+    // prints out m number of '*'
     for (int i = 0; i < m; i++) {
         cout << "*";
     }
     cout << endl;
+     // recursively calls the function with m+1
     triangle(m + 1, n);
+     // Print m '*' characters on a line again. mirroring in reverse during recursion unwind
     for (int i = 0; i < m; i++) {
         cout << "*";
     }
@@ -21,36 +21,6 @@ void triangle(int m, int n) {
 }
 
 int main(void) {
-    triangle(4,6);
+    triangle(2,20);
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-/*
-void triangle1(int m, int n) {
-    if (m <= n) {
-        for (int i = 0; i < m; i++) {
-            cout << "*";
-        }
-        cout << endl;
-        triangle1(m+1,n);
-    } else if (m >= n && m > 0) {
-        for (int i = 1; i < m; i++) {
-            cout << "*";
-        }
-        cout << endl;
-        triangle1(m-1,n-1);
-    } else {
-        return;
-    }
-}
-*/

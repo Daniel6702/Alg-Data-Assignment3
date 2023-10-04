@@ -3,24 +3,26 @@
 const int ROWS = 5;
 const int COLS = 5;
 
+
 bool findPath(char maze[ROWS][COLS], int x, int y) {
+    // to ensure that we dont check an invalid position, we have these limits
     if (x < 0 || x >= ROWS || y < 0 || y >= COLS || maze[x][y] == 'X') {
-        return false; // Ugyldig position eller væg
+        return false;
     }
-
+    // if we find the position of "E" we return true 
     if (maze[x][y] == 'E') {
-        return true; // Mål nået
+        std:: cout << "Goal reached at (" << x << "," << y << ")" << std::endl;
+        return true;
     }
-
-    maze[x][y] = 'X'; // Markerer positionen for at undgå uendelig løkke
-
-    // Rekursiv funktion til at bevæge sig i alle retninger
+    // Marks the position to "X" so we dont go in a loop
+    maze[x][y] = 'X'; 
+    // recursive movemeent function, so it continues until target reached
     if (findPath(maze, x + 1, y) || findPath(maze, x - 1, y) || findPath(maze, x, y + 1) || findPath(maze, x, y - 1)) {
-        std::cout << "Position (" << x << "," << y << ") besøgt." << std::endl; // Printer positionen
-        return true; // Returnerer sand, hvis der er fundet en vej
+        std::cout << "Position (" << x << "," << y << ") visited." << std::endl;
+        return true; 
     }
-
-    maze[x][y] = ' '; // Gendan positionen
+    // We back trace on of the code on line 18
+    maze[x][y] = ' '; 
 
     return false;
 }
@@ -34,11 +36,11 @@ int main() {
         {'X','E','X','X','X'}
     };
 
-    if (findPath(maze, 1, 1)) {
-        std::cout << "Vej fundet!" << std::endl;
-    } else {
-        std::cout << "Ingen vej fundet." << std::endl;
+    if (findPath(maze, 3, 3)) {
+        std::cout << "Path Found!" << std::endl;
+    } 
+    else {
+        std::cout << "No Path Found." << std::endl;
     }
-
     return 0;
 }
