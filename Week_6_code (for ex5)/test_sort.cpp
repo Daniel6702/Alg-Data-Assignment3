@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-//#include "sort.h"
+#include "sort.h"
 #include <time.h>
 
 using namespace std;
@@ -22,25 +22,6 @@ void permute(vector<AnyType>& a) {
 	}
 }
 
-//
-// SELECTION SORT IMPLEMENTATION EXERCISE 5!!!
-// 
-template <typename AnyType>
-void selectionSort(vector<AnyType>& a) {
-    int n = a.size();
-
-    for (int i = 0; i < n - 1; ++i) {
-        int minIdx = i;
-        for (int j = i + 1; j < n; ++j) {
-            if (a[j] < a[minIdx]) {
-                minIdx = j;
-            }
-        }
-        swap(a[i], a[minIdx]);
-    }
-}
-
-
 int main() {
 	const int NUM_ITEMS = 1000;
 
@@ -51,12 +32,6 @@ int main() {
 
 	for (int theSeed = 0; theSeed < 10; ++theSeed) {
 		srand(time(0) + theSeed);
-
-		// Test of selectionSort
-		permute(a);
-		selectionSort(a);
-		checkSort(a);
-
 		
 		permute(a);
 		insertionSort(a);
@@ -73,6 +48,10 @@ int main() {
 		permute(a);
 		quickSort(a);
 		checkSort(a); 
+
+		permute(a);
+        selection_sort(a);
+        checkSort(a);
 	}
 
 	return 0;
