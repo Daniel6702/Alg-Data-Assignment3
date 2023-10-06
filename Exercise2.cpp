@@ -21,6 +21,6 @@ void triangle(int m, int n) {
 }
 
 int main(void) {
-    triangle(2,20);
+    triangle(2,7);
     return 0;
 }

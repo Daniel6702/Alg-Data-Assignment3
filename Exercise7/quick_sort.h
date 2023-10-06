@@ -46,10 +46,10 @@ int partition(vector<Comparable>& a, int left, int right) {
 template <typename Comparable>
 void quickSort(vector<Comparable>& a, int left, int right) {
 	
-	//Check for invalid indices
+	//Check for invalid indices	
 	assert(left >= 0 && right < a.size() && left <= right);
 
-	/*MODIFICATION FOR INTROSORT*/
+	// Here is the modification for introsort
 	int useInsertion = 96;
 	assert(useInsertion > 0 && useInsertion < a.size());
 	if (right < useInsertion) {

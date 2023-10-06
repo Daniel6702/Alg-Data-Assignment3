@@ -4,23 +4,21 @@ using namespace std;
 
 void countingSort(vector<int>& arr, int k) {
     vector<int> count(k + 1, 0);
-
     // Count the occurrences of each element
     for (int i = 0; i < arr.size(); ++i) {
         count[arr[i]]++;
     }
-
     // Calculate cumulative counts
     for (int i = 1; i <= k; ++i) {
         count[i] += count[i - 1];
     }
-
+    //Places elements in sorted order
     vector<int> sorted(arr.size());
     for (int i = arr.size() - 1; i >= 0; --i) {
         sorted[count[arr[i]] - 1] = arr[i];
         count[arr[i]]--;
     }
-
+    // Puts the sorted order as the array
     arr = sorted;
 }
 
@@ -32,9 +30,8 @@ int main() {
         cout << num << " ";
     }
     cout << endl;
-
-    countingSort(arr, 9);  // 9 is the maximum element in the array in this example
-
+    // 9 is the maximum element in the array in this example
+    countingSort(arr, 9);  
     cout << "Sorted Array: ";
     for (int num : arr) {
         cout << num << " ";

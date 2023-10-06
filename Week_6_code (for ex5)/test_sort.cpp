@@ -14,7 +14,6 @@ void checkSort(const vector<int>& a) {
 	cout << "Finished checksort" << endl;
 }
 
-
 template <typename AnyType>
 void permute(vector<AnyType>& a) {
 	for (int j = 1; j < a.size(); ++j) {
